@@ -5,14 +5,75 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="./Fake-Text_files/style.css">
+        <style>
+                *,
+body,
+html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: black;
+    color: lightgreen;
+    font-size: 22px;
+}
+
+#numColumn{
+    min-height: 100vh;
+    width: 5%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 3px;
+}
+
+#fakeOutput{
+    display: inline-block;
+    vertical-align: top;
+    width: 94%;
+    padding-left: 10px;
+}
+        </style>
     </head>
     <body>
         <p id="numColumn"><br>1</p>
         <p id="fakeOutput"><br>struct group</p>
 
-        <script src="./Fake-Text_files/script.js.download"></script>
-    <script defer="" src="./Fake-Text_files/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;3c035defe3da4d3caf8b0a246f6f5ea8&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+        <script>
+                let fakeText =
+    "/nstruct group_info init_groups = { .usage = ATOMIC_INIT(2) }; /n /nstruct group_info *groups_alloc(int gidsetsize){ /n    struct group_info *group_info; /n    int nblocks; /n    int i; /n /n    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK;  /n    nblocks = nblocks ? : 1; /n    group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER); /n    if (!group_info) /n        return NULL; /n /n    group_info->ngroups = gidsetsize; /n    group_info->nblocks = nblocks; /n    atomic_set(&group_info->usage, 1); /n /n    if (gidsetsize <= NGROUPS_SMALL) /n        group_info->blocks[0] = group_info->small_block; /n    else { /n        for (i = 0; i < nblocks; i++) { /n            gid_t *b; /n            b = (void *)__get_free_page(GFP_USER); /n            if (!b) /n                goto out_undo_partial_alloc; /n            group_info->blocks[i] = b; /n        } /n    } /n    return group_info; /n /n /nout_undo_partial_alloc: /n /n    while (--i >= 0) { /n /n        free_page((unsigned long)group_info->blocks[i]); /n /n    } /n /n    kfree(group_info); /n /n    return NULL; /n /n} /n /n /n /nEXPORT_SYMBOL(groups_alloc); /n /n /n /nvoid groups_free(struct group_info *group_info) /n /n{  /n    if (group_info->blocks[0] != group_info->small_block) { /n /n        int i; /n /n        for (i = 0; i < group_info->nblocks; i++) /n /n/nstruct group_info init_groups = { .usage = ATOMIC_INIT(2) }; /n /nstruct group_info *groups_alloc(int gidsetsize){ /n    struct group_info *group_info; /n    int nblocks; /n    int i; /n /n /n    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK; /n    /* Make sure we always allocate at least one indirect block pointer */ /n    nblocks = nblocks ? : 1; /n    group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER); /n    if (!group_info) /n        return NULL; /n /n    group_info->ngroups = gidsetsize; /n    group_info->nblocks = nblocks; /n    atomic_set(&group_info->usage, 1); /n /n    if (gidsetsize <= NGROUPS_SMALL) /n        group_info->blocks[0] = group_info->small_block; /n    else { /n        for (i = 0; i < nblocks; i++) { /n            gid_t *b; /n            b = (void *)__get_free_page(GFP_USER); /n            if (!b) /n                goto out_undo_partial_alloc; /n            group_info->blocks[i] = b; /n        } /n    } /n    return group_info; /n /n /nout_undo_partial_alloc: /n /n    while (--i >= 0) { /n /n        free_page((unsigned long)group_info->blocks[i]); /n /n    } /n /n    kfree(group_info); /n /n    return NULL; /n /n} /n /n /n /nEXPORT_SYMBOL(groups_alloc); /n /n /n /nvoid groups_free(struct group_info *group_info) /n /n{ /n /n    if (group_info->blocks[0] != group_info->small_block) { /n /n        int i; /n /n        for (i = 0; i < group_info->nblocks; i++) /n /n/nstruct group_info init_groups = { .usage = ATOMIC_INIT(2) }; /n /nstruct group_info *groups_alloc(int gidsetsize){ /n    struct group_info *group_info; /n    int nblocks; /n    int i; /n /n /n    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK; /n    /* Make sure we always allocate at least one indirect block pointer */ /n    nblocks = nblocks ? : 1; /n    group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER); /n    if (!group_info) /n        return NULL; /n /n    group_info->ngroups = gidsetsize; /n    group_info->nblocks = nblocks; /n    atomic_set(&group_info->usage, 1); /n /n    if (gidsetsize <= NGROUPS_SMALL) /n        group_info->blocks[0] = group_info->small_block; /n    else { /n        for (i = 0; i < nblocks; i++) { /n            gid_t *b; /n            b = (void *)__get_free_page(GFP_USER); /n            if (!b) /n                goto out_undo_partial_alloc; /n            group_info->blocks[i] = b; /n        } /n    } /n    return group_info; /n /n /nout_undo_partial_alloc: /n /n    while (--i >= 0) { /n /n        free_page((unsigned long)group_info->blocks[i]); /n /n    } /n /n    kfree(group_info); /n     return NULL; /n /n} /n /n /n /nEXPORT_SYMBOL(groups_alloc); /n  /nvoid groups_free(struct group_info *group_info) /n /n{ /n /n    if (group_info->blocks[0] != group_info->small_block) { /n /n        int i; /n /n        for (i = 0; i < group_info->nblocks; i++) /n /n echo('Hello World');";
+
+let fakeArray = fakeText.split('');
+let index = 0;
+
+let lineNum = 1;
+let textToShow = [];
+let output = document.getElementById('fakeOutput');
+let numColumn = document.getElementById('numColumn');
+
+document.onkeydown = fakeType;
+
+function fakeType() {
+    if (fakeArray[index] === '/' && fakeArray[index + 1] === 'n') {
+        numColumn.innerHTML += '<br>' + lineNum;
+        textToShow.push('<br>');
+        lineNum++;
+        index += 2;
+
+        while (fakeArray[index] === ' ') {
+            textToShow.push('&nbsp;');
+            index++;
+        }
+    } else {
+        textToShow.push(fakeArray[index]);
+        index++;
+    }
+
+    output.innerHTML = textToShow.join('');
+}
+
+        </script>
 
 
 </body></html>
